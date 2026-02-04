@@ -1,0 +1,323 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursive Frequency Counter Diagram</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        
+        .array-display {
+            background: #e3f2fd;
+            border: 2px solid #2196f3;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .array-element {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border: 2px solid #2196f3;
+            border-radius: 5px;
+            margin: 5px;
+            line-height: 36px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .current-element {
+            background: #ffeb3b !important;
+            border-color: #ff9800 !important;
+        }
+        
+        .phase {
+            background: #f8f9fa;
+            border-left: 5px solid #007bff;
+            margin: 25px 0;
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .phase h3 {
+            color: #007bff;
+            margin-top: 0;
+        }
+        
+        .function-call {
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        
+        .recursive-step {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 20px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        
+        .count-step {
+            background: #fce4ec;
+            border: 2px solid #e91e63;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 5px 40px;
+            font-size: 12px;
+        }
+        
+        .result {
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            text-align: center;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        
+        .arrow {
+            text-align: center;
+            font-size: 20px;
+            color: #666;
+            margin: 5px 0;
+        }
+        
+        .explanation {
+            background: #f0f4f8;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        
+        .step-counter {
+            display: inline-block;
+            background: #ff5722;
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 Recursive Frequency Counter Diagram</h1>
+        <p class="subtitle">Activity 6.1: Finding Duplicates using Recursion</p>
+        
+        <div class="array-display">
+            <h3>Input Array: {1, 2, 2, 3, 4, 4, 4, 5, 5}</h3>
+            <div class="array-element">1</div>
+            <div class="array-element">2</div>
+            <div class="array-element">2</div>
+            <div class="array-element">3</div>
+            <div class="array-element">4</div>
+            <div class="array-element">4</div>
+            <div class="array-element">4</div>
+            <div class="array-element">5</div>
+            <div class="array-element">5</div>
+            <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                Index: &nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8
+            </div>
+        </div>
+
+        <div class="phase">
+            <h3>📋 Algorithm Overview</h3>
+            <div class="explanation">
+                <strong>Two Recursive Functions:</strong><br>
+                • <code>findFrequencies()</code> - Main function that processes each unique element<br>
+                • <code>countFrequency()</code> - Helper function that counts occurrences of a specific element
+            </div>
+        </div>
+
+        <div class="phase">
+            <h3>🎯 Step 1: Processing Element 1</h3>
+            <div class="function-call">
+                <span class="step-counter">1</span><strong>findFrequencies(arr, 9, 0)</strong> - Start at index 0
+            </div>
+            <div class="recursive-step">
+                Current element: arr[0] = 1 (not a duplicate, so process it)
+            </div>
+            <div class="recursive-step">
+                <strong>countFrequency(arr, 9, 1, 0)</strong> - Count occurrences of element 1
+                <div class="count-step">Index 0: arr[0] = 1 ✓ (match) → 1 + countFrequency(..., 1)</div>
+                <div class="count-step">Index 1: arr[1] = 2 ✗ (no match) → countFrequency(..., 2)</div>
+                <div class="count-step">Index 2: arr[2] = 2 ✗ (no match) → countFrequency(..., 3)</div>
+                <div class="count-step">... continues until index 9 (base case)</div>
+            </div>
+            <div class="result">🎯 Result: 1 appears 1 time(s)</div>
+        </div>
+
+        <div class="phase">
+            <h3>🎯 Step 2: Processing Element 2</h3>
+            <div class="function-call">
+                <span class="step-counter">2</span><strong>findFrequencies(arr, 9, 1)</strong> - Move to index 1
+            </div>
+            <div class="recursive-step">
+                Current element: arr[1] = 2 (not a duplicate, so process it)
+            </div>
+            <div class="recursive-step">
+                <strong>countFrequency(arr, 9, 2, 0)</strong> - Count occurrences of element 2
+                <div class="count-step">Index 0: arr[0] = 1 ✗ (no match) → countFrequency(..., 1)</div>
+                <div class="count-step">Index 1: arr[1] = 2 ✓ (match) → 1 + countFrequency(..., 2)</div>
+                <div class="count-step">Index 2: arr[2] = 2 ✓ (match) → 1 + countFrequency(..., 3)</div>
+                <div class="count-step">Index 3: arr[3] = 3 ✗ (no match) → countFrequency(..., 4)</div>
+                <div class="count-step">... continues until index 9 (base case)</div>
+            </div>
+            <div class="result">🎯 Result: 2 appears 2 time(s)</div>
+        </div>
+
+        <div class="phase">
+            <h3>🎯 Step 3: Skipping Duplicate</h3>
+            <div class="function-call">
+                <span class="step-counter">3</span><strong>findFrequencies(arr, 9, 2)</strong> - Move to index 2
+            </div>
+            <div class="recursive-step">
+                Current element: arr[2] = 2<br>
+                Previous element: arr[1] = 2<br>
+                <strong>SKIP!</strong> This is a duplicate (already processed)
+            </div>
+            <div class="arrow">⬇️ Skip to next index</div>
+        </div>
+
+        <div class="phase">
+            <h3>🎯 Step 4: Processing Element 3</h3>
+            <div class="function-call">
+                <span class="step-counter">4</span><strong>findFrequencies(arr, 9, 3)</strong> - Move to index 3
+            </div>
+            <div class="recursive-step">
+                Current element: arr[3] = 3 (not a duplicate, so process it)
+            </div>
+            <div class="recursive-step">
+                <strong>countFrequency(arr, 9, 3, 0)</strong> - Count occurrences of element 3
+                <div class="count-step">Only finds 1 occurrence at index 3</div>
+            </div>
+            <div class="result">🎯 Result: 3 appears 1 time(s)</div>
+        </div>
+
+        <div class="phase">
+            <h3>🎯 Step 5: Processing Element 4</h3>
+            <div class="function-call">
+                <span class="step-counter">5</span><strong>findFrequencies(arr, 9, 4)</strong> - Move to index 4
+            </div>
+            <div class="recursive-step">
+                Current element: arr[4] = 4 (not a duplicate, so process it)
+            </div>
+            <div class="recursive-step">
+                <strong>countFrequency(arr, 9, 4, 0)</strong> - Count occurrences of element 4
+                <div class="count-step">Finds matches at indices 4, 5, and 6</div>
+            </div>
+            <div class="result">🎯 Result: 4 appears 3 time(s)</div>
+        </div>
+
+        <div class="phase">
+            <h3>🎯 Steps 6-7: Skipping More Duplicates</h3>
+            <div class="function-call">
+                <span class="step-counter">6</span><strong>findFrequencies(arr, 9, 5)</strong> - Skip (duplicate 4)
+            </div>
+            <div class="function-call">
+                <span class="step-counter">7</span><strong>findFrequencies(arr, 9, 6)</strong> - Skip (duplicate 4)
+            </div>
+        </div>
+
+        <div class="phase">
+            <h3>🎯 Step 8: Processing Element 5</h3>
+            <div class="function-call">
+                <span class="step-counter">8</span><strong>findFrequencies(arr, 9, 7)</strong> - Move to index 7
+            </div>
+            <div class="recursive-step">
+                Current element: arr[7] = 5 (not a duplicate, so process it)
+            </div>
+            <div class="recursive-step">
+                <strong>countFrequency(arr, 9, 5, 0)</strong> - Count occurrences of element 5
+                <div class="count-step">Finds matches at indices 7 and 8</div>
+            </div>
+            <div class="result">🎯 Result: 5 appears 2 time(s)</div>
+        </div>
+
+        <div class="phase">
+            <h3>🎯 Final Steps</h3>
+            <div class="function-call">
+                <span class="step-counter">9</span><strong>findFrequencies(arr, 9, 8)</strong> - Skip (duplicate 5)
+            </div>
+            <div class="function-call">
+                <span class="step-counter">10</span><strong>findFrequencies(arr, 9, 9)</strong> - Base case reached (index >= size)
+            </div>
+        </div>
+
+        <div style="background: #e8f5e8; border: 3px solid #4caf50; border-radius: 15px; padding: 25px; margin: 30px 0; text-align: center;">
+            <h2 style="color: #2e7d32; margin: 0 0 15px 0;">📊 Final Output</h2>
+            <div style="font-family: monospace; font-size: 16px; line-height: 1.6; color: #2e7d32;">
+                1 appears 1 time(s)<br>
+                2 appears 2 time(s)<br>
+                3 appears 1 time(s)<br>
+                4 appears 3 time(s)<br>
+                5 appears 2 time(s)
+            </div>
+        </div>
+
+        <div class="phase">
+            <h3>🔑 Key Recursive Concepts</h3>
+            <div class="explanation">
+                <strong>Base Cases:</strong><br>
+                • <code>findFrequencies()</code>: when index >= array size<br>
+                • <code>countFrequency()</code>: when index >= array size<br><br>
+                
+                <strong>Recursive Reduction:</strong><br>
+                • Each call processes one index and moves to the next<br>
+                • Problem size decreases with each recursive call<br><br>
+                
+                <strong>Efficiency Optimization:</strong><br>
+                • Skips duplicate elements since array is sorted<br>
+                • Only processes each unique element once
+            </div>
+        </div>
+    </div>
+</body>
+</html>

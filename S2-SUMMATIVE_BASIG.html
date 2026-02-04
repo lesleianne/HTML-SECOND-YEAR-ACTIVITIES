@@ -1,0 +1,613 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summative 2</title>
+    <link rel="icon" type="image/png" href="https://pngimg.com/uploads/netflix/netflix_PNG15.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style> 
+        :root {
+            --netflix-red: #E50914;
+            --netflix-dark: #141414;
+            --netflix-gray: #564d4d;
+            --netflix-light-gray: #f3f3f3;
+            --netflix-white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--netflix-dark);
+            color: var(--netflix-white);
+        }
+        }
+
+        .navbar {
+            background-color: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.8rem;
+            color: var(--netflix-red) !important;
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--netflix-white) !important;
+            font-weight: 400;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: #ccc !important;
+            }
+
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://th.bing.com/th/id/R.0dba6984bc25e1a4bef688e5385a3eab?rik=2R9WBO2%2fzxbS3w&riu=http%3a%2f%2fisquad.tv%2fwp-content%2fuploads%2f2018%2f08%2fNetflix-Background-1260x709.jpg&ehk=xOzMkKSOme9KyZJoOAEkZMknboNY4J3hlFEQzGue8kE%3d&risl=&pid=ImgRaw&r=0') center/cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            color: #e0e0e0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .hero-cta {
+            background-color: var(--netflix-red);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+            .hero-cta:hover {
+                background-color: #f40612;
+                color: white;
+            }
+
+        .pricing-section {
+            padding: 100px 0;
+            background: var(--netflix-dark);
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--netflix-white);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #999;
+            margin-bottom: 60px;
+        }
+
+        .pricing-card {
+            background: linear-gradient(145deg, #1f1f1f, #2a2a2a);
+            border: 2px solid #333;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .pricing-card:hover {
+                transform: translateY(-10px);
+                border-color: var(--netflix-red);
+                box-shadow: 0 20px 40px rgba(229, 9, 20, 0.2);
+            }
+
+            .pricing-card.featured {
+                border-color: var(--netflix-red);
+                box-shadow: 0 10px 30px rgba(229, 9, 20, 0.3);
+            }
+
+        .pricing-header {
+            background: linear-gradient(135deg, var(--netflix-red), #f40612);
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .plan-period {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .pricing-body {
+            padding: 40px 30px;
+        }
+
+        .pricing-btn {
+            background-color: var(--netflix-red);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            width: 100%;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+            .pricing-btn:hover {
+                background-color: #f40612;
+                color: white;
+                transform: translateY(-2px);
+            }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+            .feature-list li {
+                padding: 12px 0;
+                border-bottom: 1px solid #333;
+                color: #ccc;
+                display: flex;
+                align-items: center;
+            }
+
+                .feature-list li:last-child {
+                    border-bottom: none;
+                }
+
+                .feature-list li::before {
+                    content: "✓";
+                    color: var(--netflix-red);
+                    margin-right: 15px;
+                    font-weight: bold;
+                    font-size: 1.2rem;
+                }
+
+        .features-section {
+            background: #0f0f0f;
+            padding: 100px 0;
+        }
+
+        .feature-box {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            background: linear-gradient(145deg, #1a1a1a, #252525);
+            border-radius: 15px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+
+            .feature-box:hover {
+                transform: translateY(-5px);
+                border-color: var(--netflix-red);
+            }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            color: var(--netflix-red);
+            margin-bottom: 25px;
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--netflix-white);
+            font-weight: 600;
+        }
+
+        .feature-description {
+            color: #999;
+            line-height: 1.6;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, var(--netflix-dark) 0%, #2a0a0a 100%);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.05);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-control {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #ccc;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+            .form-control:focus {
+                background: rgba(255,255,255,0.15);
+                border-color: var(--netflix-red);
+                color: black;
+                box-shadow: 0 0 0 0.2rem rgba(229, 9, 20, 0.25);
+            }
+
+            .form-control::placeholder {
+                color: rgba(255,255,255,0.6);
+            }
+
+        .contact-btn {
+            background-color: var(--netflix-red);
+            border: none;
+            padding: 15px 50px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+            .contact-btn:hover {
+                background-color: #f40612;
+                color: white;
+                transform: translateY(-2px);
+            }
+
+        .footer {
+            background: #000000;
+            color: #999;
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 30px;
+        }
+
+            .footer-links a {
+                color: #999;
+                text-decoration: none;
+                margin: 0 15px;
+                transition: color 0.3s ease;
+            }
+
+                .footer-links a:hover {
+                    color: var(--netflix-white);
+                }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .plan-price {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-title {
+                font-size: 2rem;
+            }
+
+            .pricing-section,
+            .features-section,
+            .contact-section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+
+            .contact-form {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Pure CSS smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* CSS-only animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* CSS-only scroll reveal animations */
+        .pricing-card, .feature-box {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        /* Navbar scroll effect using CSS only */
+        .navbar {
+            background-color: rgba(20, 20, 20, 0.98);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Netflix</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">Plans</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: var(--netflix-red) !important;">Sign In</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content fade-in-up">
+                <h1 class="hero-title">Unlimited movies, TV shows, and more</h1>
+                <p class="hero-subtitle">Watch anywhere. Cancel anytime. Stream on any device with no ads.</p>
+                <button class="btn hero-cta">Start Your Free Trial</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">Choose the plan that's right for you</h2>
+            <p class="section-subtitle">Downgrade or upgrade at any time</p>
+            <div class="row">
+                <!-- Basic Plan -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="plan-name">Basic</h3>
+                            <p class="plan-price">₱279</p>
+                            <p class="plan-period">per month</p>
+                        </div>
+                        <div class="pricing-body">
+                            <button class="btn pricing-btn">Choose Basic</button>
+                            <ul class="feature-list">
+                                <li>Watch on 1 screen at a time</li>
+                                <li>Watch on your laptop, TV, phone and tablet</li>
+                                <li>Unlimited movies and TV shows</li>
+                                <li>Watch anywhere, anytime</li>
+                                <li>First month free</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Standard Plan -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="pricing-card featured">
+                        <div class="pricing-header">
+                            <h3 class="plan-name">Standard</h3>
+                            <p class="plan-price">₱399</p>
+                            <p class="plan-period">per month</p>
+                        </div>
+                        <div class="pricing-body">
+                            <button class="btn pricing-btn">Choose Standard</button>
+                            <ul class="feature-list">
+                                <li>Watch on 2 screens at the same time</li>
+                                <li>Watch in HD</li>
+                                <li>Watch on your laptop, TV, phone and tablet</li>
+                                <li>Unlimited movies and TV shows</li>
+                                <li>Download and watch offline</li>
+                                <li>First month free</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="plan-name">Premium</h3>
+                            <p class="plan-price">₱619</p>
+                            <p class="plan-period">per month</p>
+                        </div>
+                        <div class="pricing-body">
+                            <button class="btn pricing-btn">Choose Premium</button>
+                            <ul class="feature-list">
+                                <li>Watch on 4 screens at the same time</li>
+                                <li>Watch in Ultra HD</li>
+                                <li>Watch on your laptop, TV, phone and tablet</li>
+                                <li>Unlimited movies and TV shows</li>
+                                <li>Download and watch offline</li>
+                                <li>First month free</li>
+                                <li>Exclusive content access</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2 class="section-title">Why choose Netflix?</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <h3 class="feature-title">Endless Entertainment</h3>
+                        <p class="feature-description">Thousands of movies, TV shows, documentaries, and exclusive originals. New content added weekly to keep you entertained.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Watch Anywhere</h3>
+                        <p class="feature-description">Stream on your TV, laptop, phone, or tablet. Download titles to watch offline wherever you are, whenever you want.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-ban"></i>
+                        </div>
+                        <h3 class="feature-title">No Ads, No Interruptions</h3>
+                        <p class="feature-description">Enjoy uninterrupted viewing with zero advertisements. Pure entertainment experience without any commercial breaks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="contact-title">Questions? Contact us.</h2>
+            <p class="mb-5">We're here to help with any questions about your Netflix experience.</p>
+
+            <form class="contact-form">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <select class="form-control" required>
+                            <option value="">Select Topic</option>
+                            <option value="billing">Billing Questions</option>
+                            <option value="technical">Technical Support</option>
+                            <option value="content">Content Questions</option>
+                            <option value="account">Account Management</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <textarea class="form-control" rows="5" placeholder="How can we help you?" required></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn contact-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Help Center</a>
+                <a href="#">Cookie Preferences</a>
+                <a href="#">Corporate Information</a>
+            </div>
+            <p>&copy; 2025 Netflix by Basig, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,197 @@
+alert
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        function show_alert()
+            {
+                alert("Hello");
+            }
+    </script>
+</head>
+<body>
+    <input type="button" onclick="show_alert()" value="Click Me" >
+</body>
+</html>
+----------------------------------------------------------
+
+confirm
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+ <button onclick="myFunction()">Try it</button>
+
+ <script>
+    function myFunction() {
+    if (confirm("Press a button!") == true) {
+     alert("You pressed OK!");
+    } 
+    else {
+        alert("You pressed Cancel!");
+    }
+ }
+
+ </script>
+</body>
+</html>
+---------------------------------------
+user input
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+ <script>
+    var myInput = prompt("Enter a number:");
+    alert(myInput=="2" ? "Your choice is number two" : "Input again");
+
+ </script>
+</body>
+</html>
+----------------------------------------
+return
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+     <script type="text/javascript">
+        function product(a,b)
+        {
+            return a*b;
+        }
+     </script>
+</head>
+<body>
+    <script type="text/javascript">
+        document.write(product(20,300));
+    </script>
+</body>
+</html>
+------------------------------------------
+for loop
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+ var i=0;
+ for (i=0;i<=5;i++)
+ {
+ document.write("The number is " + i);
+ document.write("<br />");
+ }
+ </script>
+</body>
+</html>
+-----------------------------------
+while
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+var i=0;
+ while (i<=5)
+ {
+ document.write("The number is " + i);
+ document.write("<br />");
+ i++;
+ }
+ </script>
+</body>
+</html>
+-------------------------------------
+do while
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+ var i=0;
+ do
+ {
+ document.write("The number is " + i);
+ document.write("<br />");
+ i++;
+ }
+  while (i<=5);
+ </script>
+</body>
+</html>
+------------------------------------------
+break
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+ <script type="text/javascript">
+ var i=0;
+    for (i=0;i<=10;i++)
+        {
+        if (i==3)
+        {
+            break;
+        }
+ document.write("The number is " + i);
+ document.write("<br />");
+ }
+ </script>
+</body>
+</html>
+-----------------------------------------
+continue
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+ <script type="text/javascript">
+ var i=0
+ for (i=0;i<=10;i++)
+ {
+ if (i==3)
+ {
+ continue;
+ }
+ document.write("The number is " + i);
+ document.write("<br />");
+ }
+ </script>
+</body>
+</html>
+------------------------------
